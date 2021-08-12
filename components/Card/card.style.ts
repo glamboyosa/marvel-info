@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-
+import styled, {css} from 'styled-components';
+import {CardProps} from '../../libs/types/card';
 const CardsContainer = styled.main`
   margin-top: 2.5rem;
   display: grid;
@@ -23,16 +23,21 @@ const Card = styled.div`
   }
 `;
 
-const CardBottom = styled.div`
+const CardBottom = styled.div<CardProps>`
   display: flex;
-  background-color: var(--black);
+  width: 100%;
+  background-color: ${props => (props.home ? `var(--black)` : `var(--white)`)};
   align-items: center;
   position: relative;
   flex-direction: column;
   transition: all 0.2s;
-  &:hover {
-    background-color: var(--marvel-red);
-  }
+  ${props =>
+    props.home &&
+    css`
+      &:hover {
+        background-color: var(--marvel-red);
+      }
+    `}
 `;
 const CardImage = styled.img`
   width: 100%;
@@ -53,5 +58,10 @@ const CardInfo = styled.p`
   font-size: 2rem;
   color: var(--white);
 `;
-
-export {Card, CardBottom, CardImage, CardInfo, CardTitle, CardsContainer};
+const CardLine = styled.div`
+  height: 0.5rem;
+  width: auto;
+  padding: 0.5rem;
+  background-color: var(--marvel-red);
+`;
+export {Card, CardBottom, CardImage, CardInfo, CardTitle, CardsContainer, CardLine};

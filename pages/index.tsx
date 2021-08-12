@@ -7,10 +7,11 @@ import {
   CardBottom,
   CardImage,
   CardInfo,
+  CardLine,
   CardsContainer,
   CardTitle,
 } from '../components/Card/card.style';
-import {getHeroes} from '../libs/helpers/services';
+import {getHeroes, getHeroesComics} from '../libs/helpers/services';
 import {result} from '../libs/types/characters';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
@@ -81,10 +82,13 @@ const Home: NextPage = () => {
       {characters && !loading ? (
         <CardsContainer>
           {characters.map(el => (
-            <Link href={`/characters/${el.id}`} key={el.id.toString()}>
+            <Link
+              href={`/characters/${el.id}?name=${el.name}&img=${el.thumbnail.path}.${el.thumbnail.extension}`}
+              key={el.id.toString()}>
               <Card>
                 <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />
-                <CardBottom>
+                <CardLine />
+                <CardBottom home>
                   <CardTitle>{el.name}</CardTitle>
                   <CardInfo>{el.comics.available} comics available.</CardInfo>
                 </CardBottom>

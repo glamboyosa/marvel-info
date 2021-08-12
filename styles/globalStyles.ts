@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   --white-shade: #fafafa;
   --black: #000000;
   --black-shade: #313639;
+  --grey:#808080;
   --white: #ffffff;
   --purple: #360ccc;
   --marvel-red: #ed1d24;
