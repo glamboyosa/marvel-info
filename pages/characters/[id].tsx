@@ -17,7 +17,7 @@ import {Modal} from '../../components/utils/modal.style';
 
 const CharactersPage: NextPage = () => {
   const {query} = useRouter();
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   console.log(query);
   const {id, img, name} = query;
   useEffect(() => {
