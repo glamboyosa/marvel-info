@@ -31,8 +31,8 @@ const Home: NextPage = () => {
   const [search, setSearch] = useState('');
   const searchRef = useRef<HTMLInputElement>(null!);
 
-  console.log(searchRef.current?.value);
-  console.log(search);
+  
+  
   const paginationHandler = async () => {
     setPaginationLoading(true);
     if (cnt === 0) {
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
     getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!)
       .then(resp => {
         setLoading(false);
-        console.log(resp);
+        
         if (resp.code && resp.message) {
           Toastify({
             text: `${resp.message}`,
@@ -93,10 +93,10 @@ const Home: NextPage = () => {
       if (!search.length && !searchRef.current.value.length) {
         setCharacters(charactersRef.current);
       } else if (search === searchRef.current.value) {
-        console.log('sfeefef');
+        
         getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, '0', search)
           .then(resp => {
-            console.log(resp);
+            
             if (resp.code && resp.message) {
               Toastify({
                 text: `${resp.message}`,

@@ -58,7 +58,7 @@ const CharactersPage: NextPage = () => {
     if (id) {
       getHeroesComics(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, id as string)
         .then(resp => {
-          console.log(resp);
+          
           setLoading(false);
           if (resp.code && resp.message) {
             Toastify({
