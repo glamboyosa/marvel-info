@@ -3,7 +3,7 @@ export type ComicResult = {
   title: string;
   description: string;
   thumbnail: {path: string; extension: string};
-  creators: {name: string}[];
+  creators: {items: {name: string}[]};
 };
 
 export type TComics = {

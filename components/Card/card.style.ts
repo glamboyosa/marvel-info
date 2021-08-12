@@ -4,7 +4,7 @@ const CardsContainer = styled.main`
   margin-top: 2.5rem;
   display: grid;
   gap: 2rem;
-  row-gap: 6rem;
+  row-gap: 7rem;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
 `;
 const Card = styled.div`
@@ -12,6 +12,7 @@ const Card = styled.div`
   cursor: pointer;
   border-radius: 0.8rem;
   width: auto;
+  margin-top: 2rem;
   flex-direction: column;
   max-width: 50rem;
   height: 50rem;
@@ -26,7 +27,7 @@ const Card = styled.div`
 const CardBottom = styled.div<CardProps>`
   display: flex;
   width: 100%;
-  background-color: ${props => (props.home ? `var(--black)` : `var(--white)`)};
+  background-color: ${props => (props.home ? `var(--black)` : `transparent`)};
   align-items: center;
   position: relative;
   flex-direction: column;
@@ -64,4 +65,23 @@ const CardLine = styled.div`
   padding: 0.5rem;
   background-color: var(--marvel-red);
 `;
-export {Card, CardBottom, CardImage, CardInfo, CardTitle, CardsContainer, CardLine};
+
+const CardSearch = styled.input`
+  border: none;
+  border-bottom: 0.4rem solid var(--black);
+  width: 50%;
+  padding: 1rem 3rem;
+  font-family: inherit;
+  margin-top: 1.5rem;
+  outline: none;
+`;
+export {
+  Card,
+  CardBottom,
+  CardImage,
+  CardInfo,
+  CardTitle,
+  CardsContainer,
+  CardLine,
+  CardSearch,
+};

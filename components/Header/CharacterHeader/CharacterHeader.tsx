@@ -1,9 +1,9 @@
-import {characterHeaderProps} from '../../../libs/types/characterHeader';
+import { characterHeaderProps } from '../../../libs/types/characterHeader';
 import {
   CharacterContainer,
   CharacterHeader,
   CharacterImage,
-  CharacterTitle,
+  CharacterTitle
 } from './CharacterHeader.style';
 
 const CharactersHeader = ({characterTitle, characterImgURL}: characterHeaderProps) => (

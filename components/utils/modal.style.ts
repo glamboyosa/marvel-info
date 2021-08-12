@@ -7,8 +7,9 @@ const Modal = styled.div<ModalProps>`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 50%;
-  height: 80vh;
+  width: 70%;
+  padding: 1rem 3rem;
+  height: 100vh;
   transition: all 0.2s;
   ${props =>
     props.showModal
@@ -23,15 +24,19 @@ const Modal = styled.div<ModalProps>`
   background-color: var(--white);
 `;
 const ModalContent = styled.div`
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
 `;
 
 const ModalTitle = styled.h3`
   font-size: 2rem;
 `;
-const ModalDescritption = styled.div`
+const ModalContentDescritption = styled.div`
   font-size: 1.5rem;
 `;
-
-export {Modal, ModalContent, ModalTitle, ModalDescritption};
+const ModalContentImage = styled.img`
+  width: 90%;
+`;
+export {Modal, ModalContent, ModalTitle, ModalContentDescritption, ModalContentImage};

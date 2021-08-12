@@ -1,6 +1,6 @@
-import React from 'react';
 import Link from 'next/link';
-import {StyledLink} from './utils.style';
+import React from 'react';
+import { StyledLink } from './utils.style';
 
 const ReusableLink = ({
   href,
