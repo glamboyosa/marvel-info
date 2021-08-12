@@ -12,6 +12,11 @@ const Container = styled.div`
 `;
 
 const StyledLink = styled.a`
-text-decoration: none;
+  text-decoration: none;
 `;
-export {Center, Container, StyledLink};
+
+const Loading = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+export {Center, Container, StyledLink, Loading};

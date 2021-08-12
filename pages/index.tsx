@@ -14,11 +14,32 @@ import {getHeroes} from '../libs/helpers/services';
 import {result} from '../libs/types/characters';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
-import {Center, Container} from '../components/utils/utils.style';
+import {Center, Container, Loading} from '../components/utils/utils.style';
 import Link from '../components/utils/Link';
 const Home: NextPage = () => {
   const [characters, setCharacters] = useState<result[] | null>(null!);
   const [loading, setLoading] = useState(true);
+  const [paginationLoading, setPaginationLoading] = useState(false);
+  const [cnt, setCnt] = useState(0);
+
+  const [offset, setOffset] = useState('20');
+
+  const paginationHandler = async () => {
+    setPaginationLoading(true);
+    if (cnt === 0) {
+      const resp = await getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, offset);
+      setPaginationLoading(false);
+      setCharacters(prevResults => prevResults!.concat(resp.data.results));
+      setCnt(prevCnt => prevCnt + 1);
+      setOffset(prevOffset => (parseFloat(prevOffset)! + 20).toString());
+    } else {
+      const resp = await getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, offset);
+      setPaginationLoading(false);
+      setCharacters(prevResults => prevResults!.concat(resp.data.results));
+      setCnt(prevCnt => prevCnt + 1);
+      setOffset(prevOffset => (parseFloat(prevOffset)! + 20).toString());
+    }
+  };
   useEffect(() => {
     getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!)
       .then(resp => {
@@ -72,10 +93,14 @@ const Home: NextPage = () => {
           ))}
         </CardsContainer>
       ) : (
-        <p>loading</p>
+        <Loading>Loading...</Loading>
       )}
       <Center>
-        <Button>Load More</Button>
+        {paginationLoading ? (
+          <Loading>Loading...</Loading>
+        ) : (
+          <Button onClick={paginationHandler}>Load More</Button>
+        )}
       </Center>
     </Container>
   );

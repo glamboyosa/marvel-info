@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-
 const CardsContainer = styled.main`
   margin-top: 2.5rem;
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
+  row-gap: 6rem;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
 `;
 const Card = styled.div`
@@ -14,6 +14,7 @@ const Card = styled.div`
   width: auto;
   flex-direction: column;
   max-width: 50rem;
+  height: 50rem;
   background-color: var(--white);
   box-shadow: 0.4rem 0.4rem 0.7rem var(--black);
   transition: all 0.3s;
