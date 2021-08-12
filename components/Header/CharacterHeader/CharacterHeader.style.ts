@@ -15,7 +15,6 @@ const CharacterContainer = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(2, 0.5fr);
   margin-top: -10%;
-  /* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
 `;
 
 const CharacterImage = styled.img`
@@ -28,6 +27,7 @@ const CharacterImage = styled.img`
 
 const CharacterTitle = styled.h1`
   color: var(--white);
+  font-weight: bold;
   font-size: 3rem;
   text-transform: uppercase;
   text-align: center;

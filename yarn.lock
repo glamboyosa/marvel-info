@@ -343,6 +343,11 @@
     "@types/react" "*"
     csstype "^3.0.2"
 
+"@types/toastify-js@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/@types/toastify-js/-/toastify-js-1.9.2.tgz#de9ea5212f6adb73919a5dcc33158f30881d8c35"
+  integrity sha512-lIbjnaArz56dM++EsrMnt9OK9RSIMAcJGz2sfpuoblLeqYYzyvyDaJu306++K9CtvWWlmj5HXG5CnuqYJKxDbg==
+
 "@typescript-eslint/parser@^4.20.0":
   version "4.29.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.29.1.tgz#17dfbb45c9032ffa0fe15881d20fbc2a4bdeb02d"
@@ -1015,11 +1020,6 @@ depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
-
-dequal@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
-  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
 
 des.js@^1.0.0:
   version "1.0.1"
@@ -3167,13 +3167,6 @@ supports-color@^8.0.0:
   dependencies:
     has-flag "^4.0.0"
 
-swr@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-0.5.6.tgz#70bfe9bc9d7ac49a064be4a0f4acf57982e55a31"
-  integrity sha512-Bmx3L4geMZjYT5S2Z6EE6/5Cx6v1Ka0LhqZKq8d6WL2eu9y6gHWz3dUzfIK/ymZVHVfwT/EweFXiYGgfifei3w==
-  dependencies:
-    dequal "2.0.2"
-
 table@^6.0.9:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/table/-/table-6.7.1.tgz#ee05592b7143831a8c94f3cee6aae4c1ccef33e2"
@@ -3214,6 +3207,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+toastify-js@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.11.1.tgz#023a4ce64ecdead1d6d170072b62bd345088c427"
+  integrity sha512-O1UR06KEhFY9Vu2iKltgOE62+Vq/5iU7AOktouFkEegEisrqtNhEri9RpSd6u6wyPsd4Ae9RT1io3uwkMAlLVQ==
 
 toidentifier@1.0.0:
   version "1.0.0"
