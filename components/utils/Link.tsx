@@ -8,7 +8,7 @@ const ReusableLink = ({
   children,
 }: {
   href: string;
-  key: string;
+  key?: string;
   children: React.ReactNode;
 }) => (
   <Link passHref href={href}>

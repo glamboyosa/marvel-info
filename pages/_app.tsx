@@ -1,9 +1,12 @@
 import GlobalStyles from '../styles/globalStyles';
 import type {AppProps} from 'next/app';
 import {Header, HeaderImage} from '../components/Header/header.style';
-import marvelLogo from '../public/marvel.png';
+import {useRouter} from 'next/router';
+import Link from '../components/utils/Link';
 import Head from 'next/head';
 function MyApp({Component, pageProps}: AppProps) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -17,6 +20,7 @@ function MyApp({Component, pageProps}: AppProps) {
       <GlobalStyles />
       <Header>
         <HeaderImage
+          onClick={() => router.push('/')}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png"
           alt="The Marvel Logo"
         />

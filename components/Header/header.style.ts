@@ -11,6 +11,7 @@ const Header = styled.header`
 
 const HeaderImage = styled.img`
   height: 100%;
+  cursor: pointer;
 `;
 
 export {Header, HeaderImage};
