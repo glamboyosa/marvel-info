@@ -6,6 +6,12 @@ A [Marvel Developer Account](https://developer.marvel.com/docs)
 
 ## Getting Started
 
+Clone the repository via:
+
+```bash
+git clone https://github.com/glamboyosa/info.git
+```
+
 On the [my developer account page](https://developer.marvel.com/account#), click "add a new referrer" and in the input field enter `*`. This will allow API requests to be made from any URL. Ensure to click "update" for your changes to reflect.
 
 Next, copy the value of your public key and replace it with the `NEXT_PUBLIC_MARVEL_API_KEY` value in the `.env.local` file.
