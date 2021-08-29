@@ -1,4 +1,4 @@
-# Info Coding Challenge
+# Marvel Info
 
 ## Requirements
 
