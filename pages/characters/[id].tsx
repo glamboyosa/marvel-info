@@ -1,4 +1,5 @@
 import type {NextPage} from 'next';
+import {NextSeo} from 'next-seo';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React, {useEffect, useState} from 'react';
@@ -117,6 +118,25 @@ const CharactersPage: NextPage = () => {
   }, [id]);
   return (
     <>
+      <NextSeo
+        title="Marvel's Greatest Heros 🚀"
+        description="One stop place for finding comics of your favourite Marvel heros ⚡️"
+        canonical="https://static.posters.cz/image/750/posters/marvel-universe-i31869.jpg"
+        openGraph={{
+          url: 'https://marvel-info.vercel.app',
+          title: "Marvel's Greatest Heros 🚀",
+          description:
+            'One stop place for finding comics of your favourite Marvel heros ⚡️',
+          images: [
+            {
+              url: 'https://static.posters.cz/image/750/posters/marvel-universe-i31869.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Kickass Marvel Poster!',
+            },
+          ],
+        }}
+      />
       <Head>
         <title>{name}</title>
       </Head>

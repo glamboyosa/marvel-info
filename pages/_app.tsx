@@ -1,7 +1,6 @@
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {DefaultSeo} from 'next-seo';
 import {Header, HeaderImage} from '../components/Header/header.style';
 import GlobalStyles from '../styles/globalStyles';
 function MyApp({Component, pageProps}: AppProps) {
@@ -18,22 +17,7 @@ function MyApp({Component, pageProps}: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <DefaultSeo
-        openGraph={{
-          url: 'https://marvel-info.vercel.app',
-          title: "Marvel's Greatest Heros 🚀",
-          description:
-            'One stop place for finding comics of your favourite Marvel heros ⚡️',
-          images: [
-            {
-              url: 'https://static.posters.cz/image/750/posters/marvel-universe-i31869.jpg',
-              width: 800,
-              height: 600,
-              alt: 'Kickass Marvel Poster!',
-            },
-          ],
-        }}
-      />
+     
       <Header>
         <HeaderImage
           onClick={() => router.push('/')}

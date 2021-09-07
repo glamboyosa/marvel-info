@@ -3,6 +3,7 @@ import Head from 'next/head';
 import React, {useEffect, useRef, useState} from 'react';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
+import {NextSeo} from 'next-seo';
 import {Button} from '../components/Button/button.style';
 import {
   Card,
@@ -68,8 +69,27 @@ const Home: NextPage = ({
 
   return (
     <Container>
+      <NextSeo
+        title="Marvel's Greatest Heros 🚀"
+        description="One stop place for finding comics of your favourite Marvel heros ⚡️"
+        canonical="https://static.posters.cz/image/750/posters/marvel-universe-i31869.jpg"
+        openGraph={{
+          url: 'https://marvel-info.vercel.app',
+          title: "Marvel's Greatest Heros 🚀",
+          description:
+            'One stop place for finding comics of your favourite Marvel heros ⚡️',
+          images: [
+            {
+              url: 'https://static.posters.cz/image/750/posters/marvel-universe-i31869.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Kickass Marvel Poster!',
+            },
+          ],
+        }}
+      />
       <Head>
-        <title>Marvel&#39;s Greatest Heros</title>
+        <title>Marvel&#39;s Greatest Heros 🚀</title>
       </Head>
       <Search
         updateCharacters={characters => {
