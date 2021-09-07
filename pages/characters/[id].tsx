@@ -49,10 +49,12 @@ const CharactersPage: NextPage = () => {
     description: string,
     url: string,
   ) => {
+    console.log(url);
     setShowModal(true);
     setModalTitle(title);
     setModalImage(img);
     setModalDescription(description);
+    setModalLink(url);
   };
   // set back to defaults
   const closeModalHandler = () => {
@@ -113,9 +115,11 @@ const CharactersPage: NextPage = () => {
           <ModalContentDescritption>
             {modalDescription ? modalDescription : 'Description not provided 😥'}
           </ModalContentDescritption>
-          <a style={{textDecoration: 'none'}} href={modalLink}>
-            <Button>Read Comic</Button>
-          </a>
+          <Center>
+            <a style={{textDecoration: 'none'}} href={modalLink}>
+              <Button>Read Comic</Button>
+            </a>
+          </Center>
         </ModalContent>
       </Modal>
       <Center>
@@ -135,9 +139,10 @@ const CharactersPage: NextPage = () => {
                     el.title,
                     `${el.thumbnail.path}.${el.thumbnail.extension}`,
                     el.description,
-                    el.url,
+                    el.urls[0].url,
                   )
                 }>
+                
                 <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />
                 <CardBottom home={false}>
                   <CardTitle style={{color: '#000', fontSize: '2rem', marginTop: '1rem'}}>

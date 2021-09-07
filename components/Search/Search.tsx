@@ -31,6 +31,16 @@ const Search = ({updateCharacters}: SearchProps) => {
                 stopOnFocus: true,
               }).showToast();
             } else {
+              !resp.data.results.length &&
+                Toastify({
+                  text: `Unable to find superhero. Consider adding a hyphen or shortening search 👍🏿`,
+                  duration: 3000,
+                  close: true,
+                  gravity: 'top',
+                  position: 'center',
+                  backgroundColor: '#f00',
+                  stopOnFocus: true,
+                }).showToast();
               updateCharacters(resp.data.results);
               setSearch('');
             }

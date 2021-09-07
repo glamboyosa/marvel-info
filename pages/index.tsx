@@ -17,7 +17,7 @@ import {
 import Search from '../components/Search/Search';
 import Link from '../components/utils/Link';
 import {Center, Container, Loading} from '../components/utils/utils.style';
-import {getHeroes} from '../libs/helpers/services';
+import {getHeroes, getHeroesSSR} from '../libs/helpers/services';
 import {result} from '../libs/types/characters';
 const Home: NextPage = ({
   results,
@@ -31,7 +31,7 @@ const Home: NextPage = ({
   const [cnt, setCnt] = useState(0);
   // this ref contains current character data, the full list fetched
   // we always have a 'snapshot' of the full + paginated characters
-  const charactersRef = useRef<result[] | null>(null);
+  const charactersRef = useRef<result[] | null>(characters);
   const [offset, setOffset] = useState('20');
 
   const paginationHandler = async () => {
@@ -53,7 +53,7 @@ const Home: NextPage = ({
     }
   };
   useEffect(() => {
-    if (code && message) {
+    if (code && message !== 'undefined') {
       Toastify({
         text: `${message}`,
         duration: 3000,
@@ -76,26 +76,24 @@ const Home: NextPage = ({
           characters ? setCharacters(characters) : setCharacters(charactersRef.current);
         }}
       />
-      {characters?.length ? (
-        <CardsContainer>
-          {characters.map(el => (
-            <Link
-              href={`/characters/${el.id}?name=${el.name}&img=${el.thumbnail.path}.${el.thumbnail.extension}`}
-              key={el.id.toString()}>
-              <Card>
-                <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />
-                <CardLine />
-                <CardBottom home>
-                  <CardTitle>{el.name}</CardTitle>
-                  <CardInfo>{el.comics.available} comics available.</CardInfo>
-                </CardBottom>
-              </Card>
-            </Link>
-          ))}
-        </CardsContainer>
-      ) : (
-        <Loading>Loading...</Loading>
-      )}
+
+      <CardsContainer>
+        {characters!.map(el => (
+          <Link
+            href={`/characters/${el.id}?name=${el.name}&img=${el.thumbnail.path}.${el.thumbnail.extension}`}
+            key={el.id.toString()}>
+            <Card>
+              <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />
+              <CardLine />
+              <CardBottom home>
+                <CardTitle>{el.name}</CardTitle>
+                <CardInfo>{el.comics.available} comics available.</CardInfo>
+              </CardBottom>
+            </Card>
+          </Link>
+        ))}
+      </CardsContainer>
+
       <Center>
         {paginationLoading ? (
           <Loading>Loading...</Loading>
@@ -108,13 +106,17 @@ const Home: NextPage = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const resp = await getHeroes(process.env.MARVEL_API_KEY!);
+  const resp = await getHeroesSSR(
+    process.env.MARVEL_API_KEY!,
+    process.env.MARVEL_PRIVATE_API_KEY!,
+  );
+  console.log(resp);
 
   return {
     props: {
       results: resp.data.results,
       code: resp.code,
-      message: resp.message,
+      message: resp.message ?? 'undefined',
     },
   };
 };

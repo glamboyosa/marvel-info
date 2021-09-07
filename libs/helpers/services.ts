@@ -1,6 +1,26 @@
-import { TCharacters } from '../types/characters';
-import { TComics } from '../types/comics';
+import {TCharacters} from '../types/characters';
+import {TComics} from '../types/comics';
+import md5 from 'blueimp-md5';
+const getHeroesSSR = async (
+  apiKey: string,
+  privateApiKey: string,
+  offset: string = '0',
+) => {
+  const timeStamp = new Date().getTime();
+  const hash = md5(`${timeStamp}${privateApiKey}${apiKey}`);
+  const response = await fetch(
+    `https://gateway.marvel.com:443/v1/public/characters?limit=20&offset=${offset}&ts=${timeStamp}&apikey=${apiKey}&hash=${hash}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
 
+  const resp: TCharacters = await response.json();
+
+  return resp;
+};
 const getHeroes = async (
   apiKey: string,
   offset: string = '0',
@@ -35,5 +55,4 @@ const getHeroesComics = async (apiKey: string, heroId: string): Promise<TComics>
 
   return resp;
 };
-export { getHeroes, getHeroesComics };
-
+export {getHeroes, getHeroesSSR, getHeroesComics};
