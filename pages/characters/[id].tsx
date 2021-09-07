@@ -49,7 +49,6 @@ const CharactersPage: NextPage = () => {
     description: string,
     url: string,
   ) => {
-    console.log(url);
     setShowModal(true);
     setModalTitle(title);
     setModalImage(img);
@@ -64,6 +63,25 @@ const CharactersPage: NextPage = () => {
     setModalDescription('');
     setModalLink('');
   };
+  const renderImages = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 100) {
+      const images: NodeListOf<HTMLImageElement> = document.querySelectorAll('.images');
+
+      images.forEach(async (image, index) => {
+        console.log(image.dataset.src);
+
+        if (image.complete) {
+          image.src = image.dataset.src!;
+          console.log(`image at ${index} has fully loaded`);
+        }
+      });
+    }
+  };
+  // useEffect for image logic
+  useEffect(() => {
+    document.addEventListener('scroll', renderImages);
+  }, []);
   useEffect(() => {
     if (id) {
       getHeroesComics(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, id as string)
@@ -142,8 +160,11 @@ const CharactersPage: NextPage = () => {
                     el.urls[0].url,
                   )
                 }>
-                
-                <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />
+                <CardImage
+                  className="images"
+                  src="https://ik.imagekit.io/demo/img/image8.jpeg?tr=w-400,h-300,bl-30,q-50"
+                  data-src={`${el.thumbnail.path}.${el.thumbnail.extension}`}
+                />
                 <CardBottom home={false}>
                   <CardTitle style={{color: '#000', fontSize: '2rem', marginTop: '1rem'}}>
                     {el.title}
@@ -171,7 +192,9 @@ const CharactersPage: NextPage = () => {
             ))}
           </CardsContainer>
         ) : (
-          <Loading>Loading...</Loading>
+          <Center>
+            <Loading>👁</Loading>
+          </Center>
         )}
       </Container>
     </>

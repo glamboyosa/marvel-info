@@ -96,7 +96,9 @@ const Home: NextPage = ({
 
       <Center>
         {paginationLoading ? (
-          <Loading>Loading...</Loading>
+          <Center>
+            <Loading>👁</Loading>
+          </Center>
         ) : (
           <Button onClick={paginationHandler}>Load More</Button>
         )}
@@ -110,7 +112,6 @@ export const getServerSideProps: GetServerSideProps = async context => {
     process.env.MARVEL_API_KEY!,
     process.env.MARVEL_PRIVATE_API_KEY!,
   );
-  console.log(resp);
 
   return {
     props: {

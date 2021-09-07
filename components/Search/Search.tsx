@@ -15,7 +15,7 @@ const Search = ({updateCharacters}: SearchProps) => {
   useEffect(() => {
     setTimeout(() => {
       // if the input is empty
-      if (!search.length && !searchRef.current.value.length) {
+      if (!search.length && !searchRef.current?.value.length) {
         updateCharacters();
       } else if (search === searchRef.current.value) {
         getHeroes(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, '0', search)

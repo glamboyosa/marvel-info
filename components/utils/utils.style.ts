@@ -1,5 +1,13 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
+const rotateKeyframes = keyframes`
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+`;
 const Center = styled.div`
   display: flex;
   align-items: center;
@@ -16,9 +24,10 @@ const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-const Loading = styled.p`
-  font-size: 2rem;
-  font-weight: bold;
+const Loading = styled.div`
+  font-size: 4rem;
+  margin-right: 1.5rem;
+  animation: ${rotateKeyframes} 2s linear infinite;
 `;
 
 const Line = styled.div`
