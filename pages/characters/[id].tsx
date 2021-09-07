@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
 import {ComicResult} from '../..//libs/types/comics';
+import {Button} from '../../components/Button/button.style';
 import {
   Card,
   CardBottom,
@@ -36,12 +37,18 @@ const CharactersPage: NextPage = () => {
   const [modalImage, setModalImage] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [modalDescription, setModalDescription] = useState('');
+  const [modalLink, setModalLink] = useState('');
   const [characterComics, setCharacterComics] = useState<ComicResult[] | null>(null!);
   const [loading, setLoading] = useState(true);
   const {id, img, name} = query;
 
   // pass in the clicked elements title, image path and description to render in the modal
-  const showModalHandler = (title: string, img: string, description: string) => {
+  const showModalHandler = (
+    title: string,
+    img: string,
+    description: string,
+    url: string,
+  ) => {
     setShowModal(true);
     setModalTitle(title);
     setModalImage(img);
@@ -53,12 +60,12 @@ const CharactersPage: NextPage = () => {
     setModalTitle('');
     setModalImage('');
     setModalDescription('');
+    setModalLink('');
   };
   useEffect(() => {
     if (id) {
       getHeroesComics(process.env.NEXT_PUBLIC_MARVEL_API_KEY!, id as string)
         .then(resp => {
-          
           setLoading(false);
           if (resp.code && resp.message) {
             Toastify({
@@ -106,6 +113,9 @@ const CharactersPage: NextPage = () => {
           <ModalContentDescritption>
             {modalDescription ? modalDescription : 'Description not provided 😥'}
           </ModalContentDescritption>
+          <a style={{textDecoration: 'none'}} href={modalLink}>
+            <Button>Read Comic</Button>
+          </a>
         </ModalContent>
       </Modal>
       <Center>
@@ -125,6 +135,7 @@ const CharactersPage: NextPage = () => {
                     el.title,
                     `${el.thumbnail.path}.${el.thumbnail.extension}`,
                     el.description,
+                    el.url,
                   )
                 }>
                 <CardImage src={`${el.thumbnail.path}.${el.thumbnail.extension}`} />

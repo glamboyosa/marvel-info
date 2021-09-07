@@ -1,7 +1,7 @@
-import type { AppProps } from 'next/app';
+import type {AppProps} from 'next/app';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { Header, HeaderImage } from '../components/Header/header.style';
+import {useRouter} from 'next/router';
+import {Header, HeaderImage} from '../components/Header/header.style';
 import GlobalStyles from '../styles/globalStyles';
 function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();

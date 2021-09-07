@@ -1,6 +1,7 @@
 export type ComicResult = {
   id: number;
   title: string;
+  url: string;
   description: string;
   thumbnail: {path: string; extension: string};
   creators: {items: {name: string}[]};
